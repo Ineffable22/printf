@@ -23,6 +23,5 @@ int (*match_case(const char *flag))(va_list)
 			return (flag_store[pos].f);
 		pos++;
 	}
-
-	return (flag_store[pos].f);
+	exit(1);
 }
