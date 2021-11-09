@@ -19,9 +19,9 @@ int (*match_case(const char *flag))(va_list)
 
 	while (pos < 4)
 	{
-		if (*(flag_store[pos].c) == flag[0])
+		if (*(flag_store[pos]).c == *flag)
 			return (flag_store[pos].f);
 		pos++;
 	}
-	exit(1);
+	return (flag_store[pos].f);
 }
