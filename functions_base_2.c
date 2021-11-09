@@ -7,34 +7,24 @@
  */
 int digit_case_S(va_list ptr)
 {
-	int pos = 0, tmp = 0, len = 0;
+	int pos = 0, len = 0;
 	char *save = va_arg(ptr, char *);
-	char c;
 
 	if (save == NULL)
+		save = "(null)";
+	while (*(save + pos))
 	{
-		_puts("(null)");
-		return (6);
-	}
-	while (*(save + tmp))
-	{
-		c = *(save + tmp);
-		if ((0 < c && 32 > c) || c >= 127)
+		if ((32 > *(save + pos)) || *(save + pos) >= 127)
 		{
 			_putchar('\\');
-			pos++;
 			_putchar('x');
+			len+= 2;
+			len += convert_base(16, *(save + pos), 2);
 			pos++;
-			len = convert_base(16, c, 2);
-			pos = pos + len;
-			c = *(save + tmp + 1);
-			tmp++;
-			if (c == '\0')
+			if (*(save + pos) == '\0')
 				break;
 		}
-		_putchar(c);
-		pos++;
-		tmp++;
+		len += _putchar(*(save + pos++));
 	}
-	return (pos + tmp);
+	return (len);
 }
