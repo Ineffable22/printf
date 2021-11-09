@@ -18,7 +18,7 @@ int digit_case_S(va_list ptr)
 		{
 			_putchar('\\');
 			_putchar('x');
-			len+= 2;
+			len += 2;
 			len += convert_base(16, *(save + pos), 2);
 			pos++;
 			if (*(save + pos) == '\0')
