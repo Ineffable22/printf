@@ -22,7 +22,7 @@ int convert_base(int base, int number, int band)
 	ptr--;
 	if (number < 0)
 		number = -number;
-	while (number > 0)
+	while (number >= 0)
 	{
 		*ptr-- = buffer[number % base];
 		number = number / base;
