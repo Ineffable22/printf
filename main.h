@@ -40,6 +40,6 @@ int digit_base_16_upper(va_list ptr);
 int restriction_percentage(const char *str);
 int (*match_case(const char *))(va_list);
 int convert_base(int base, long int number, int band);
-int print_number(int n);
+int print_number(long int n);
 
 #endif
