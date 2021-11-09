@@ -10,7 +10,8 @@
 int convert_base(int base, int number, int band)
 {
 	char buffer[17];
-	char *ptr;
+	char buffersito[20];
+	char *ptr = &buffersito[20];
 	long int save = number;
 
 	if (band == 0)
