@@ -20,9 +20,11 @@ int convert_base(int base, int number, int band)
 		_strcpy(buffer, "0123456789abcdef");
 	*ptr = '\0';
 	ptr--;
-	if (number < 0)
-		number = -number;
 
+	if (number < 0)
+	{
+		number = -number;
+	}
 	while (number >= 0)
 	{
 		*ptr-- = buffer[number % base];
@@ -36,6 +38,6 @@ int convert_base(int base, int number, int band)
 		*ptr-- = 'x', *ptr-- = '0';
 	ptr++;
 	if (ptr == NULL)
-		exit(100);
+		return (0);
 	return (write(1, ptr, _strlen(ptr)));
 }
