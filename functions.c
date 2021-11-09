@@ -17,3 +17,21 @@ int convert_base(int base, int number, int band)
 	if (band == 0)
 		_strcpy(buffer, "0123456789ABCDEF");
 	else
+		_strcpy(buffer, "0123456789abcdef");
+	*ptr = '\0';
+	ptr--;
+	if (number < 0)
+		number = -number;
+	while (number > 0)
+	{
+		*ptr-- = buffer[number % base];
+		number = number / base;
+	}
+	if (save < 0)
+		*ptr-- = '-';
+	if (band == 16)
+		*ptr-- = 'x', *ptr-- = '0';
+	ptr++;
+	_puts(ptr);
+	return (_strlen(ptr));
+}
