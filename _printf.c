@@ -12,14 +12,6 @@ int _printf(const char *format, ...)
 	int pos = 0, len = 0, tmp = 0, count = 0;
 	const char *savec;
 
-<<<<<<< HEAD
-=======
-	if (format == NULL)
-		exit(255);
-	if (restriction_percentage(format) == -1)
-		exit(1);
-
->>>>>>> f4cc9050b1dbbd758ebdc68146187882f69bf30e
 	va_start(ptr, format);
 
 	if (format != NULL)
