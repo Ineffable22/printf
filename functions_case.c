@@ -9,9 +9,7 @@ int char_case(va_list ptr)
 {
 	char c = va_arg(ptr, int);
 
-	if (c != '\0')
-		_putchar(c);
-	return (1);
+	return (write(1, &c, 1));
 }
 /**
  * string_case - Add the argument string to the buffer
