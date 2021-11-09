@@ -29,7 +29,13 @@ char *_strcat(char *, char *);
 /* --------------------------- */
 int char_case(va_list);
 int string_case(va_list);
+int digit_case_u(va_list ptr);
+
 int digit_base_10(va_list);
+int digit_base_2(va_list ptr);
+int digit_base_8(va_list ptr);
+int digit_base_16_lower(va_list ptr);
+int digit_base_16_upper(va_list ptr);
 /*------------------------------------*/
 int restriction_percentage(const char *str);
 int (*match_case(const char *))(va_list);
