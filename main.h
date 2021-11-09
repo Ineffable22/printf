@@ -30,6 +30,7 @@ char *_strcat(char *, char *);
 int char_case(va_list);
 int string_case(va_list);
 int digit_case_u(va_list ptr);
+int digit_case_S(va_list ptr);
 
 int digit_base_10(va_list);
 int digit_base_2(va_list ptr);
