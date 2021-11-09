@@ -14,36 +14,31 @@ int _printf(const char *format, ...)
 
 	va_start(ptr, format);
 
-	if (format != NULL)
+	if (format != NULL && (restriction_percentage(format) != -1))
 	{
-		if (restriction_percentage(format) != -1)
+		while (*(format + pos) != '\0')
 		{
-			while (*(format + pos) != '\0')
+			savec = (format + pos);
+			if (*savec == '%' && *(savec + 1) != '%')
 			{
-				savec = (format + pos);
-				if (*savec == '%' && *(savec + 1) != '%')
-				{
-					len = match_case(savec + 1)(ptr);
-					tmp += len;
-					pos = pos + 2;
-					savec = (format + pos - 2);
-				}
-				if (*(savec) == '%' && *(savec + 1) == '%')
-					pos++, savec = (format + pos);
-				if (*(savec - 1) != '%' && *(savec) == '%' && *(savec + 1) != '%')
+				len = match_case(savec + 1)(ptr);
+				tmp += len;
+				pos = pos + 2;
+				savec = (format + pos - 2);
+			}
+			if (*(savec) == '%' && *(savec + 1) == '%')
+				pos++, savec = (format + pos);
+			if (*(savec - 1) != '%' && *(savec) == '%' && *(savec + 1) != '%')
 				continue;
 			_putchar(*(savec));
 			count++;
 			pos++;
-			}
-		if (count == 0 && len == 0)
-			exit(1);
 		}
-		else
-			exit(1);
+		if (count == 0 && len == 0)
+			return (-1);
 	}
 	else
-		exit(1);
+		return (-1);
 	va_end(ptr);
 	return (count + tmp);
 }
