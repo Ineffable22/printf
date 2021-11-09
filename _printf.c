@@ -34,8 +34,6 @@ int _printf(const char *format, ...)
 			count++;
 			pos++;
 		}
-		if (count == 0 && len == 0)
-			return (-1);
 	}
 	else
 		return (-1);
