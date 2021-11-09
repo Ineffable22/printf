@@ -12,7 +12,9 @@ int _printf(const char *format, ...)
 	int pos = 0, len = 0, tmp = 0, count = 0;
 	const char *savec;
 
-	if (format == NULL || restriction_percentage(format) == -1)
+	if (format == NULL)
+		exit(255);
+	if (restriction_percentage(format) == -1)
 		exit(1);
 
 	va_start(ptr, format);
