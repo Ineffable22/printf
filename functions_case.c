@@ -23,6 +23,5 @@ int string_case(va_list ptr)
 {
 	char *save = va_arg(ptr, char *);
 
-	_puts(save);
-	return (_strlen(save));
+	return (write(1, save, _strlen(save)));
 }
