@@ -12,3 +12,17 @@ int (*match_case(const char *flag))(va_list)
 	c_mtc flag_store[] = {
 		{"s", string_case},
 		{"c", char_case},
+		{"d", digit_base_10},
+		{"i", digit_base_10},
+		{NULL, NULL}
+	};
+
+	while (pos < 4)
+	{
+		if (*(flag_store[pos].c) == flag[0])
+			return (flag_store[pos].f);
+		pos++;
+	}
+
+	return (flag_store[pos].f);
+}
