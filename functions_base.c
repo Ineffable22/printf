@@ -5,3 +5,9 @@
  *
  * Return: length of string added to buffer
  */
+int digit_base_10(va_list ptr)
+{
+	int save = va_arg(ptr, int);
+
+	return (convert_base(10, save, 0));
+}
