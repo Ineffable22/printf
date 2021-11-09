@@ -7,7 +7,7 @@
  *
  * Return: length of string added to buffer
  */
-int convert_base(int base, int number, int band)
+int convert_base(int base, long int number, int band)
 {
 	char buffer[17];
 	char buffersito[20];
