@@ -37,6 +37,5 @@ int convert_base(int base, int number, int band)
 	ptr++;
 	if (ptr == NULL)
 		exit(100);
-	_puts(ptr);
-	return (_strlen(ptr));
+	return (write(1, ptr, _strlen(ptr)));
 }
