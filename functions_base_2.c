@@ -21,10 +21,9 @@ int digit_case_S(va_list ptr)
 			len += 2;
 			len += convert_base(16, *(save + pos), 2);
 			pos++;
-			if (*(save + pos) == '\0')
-				break;
 		}
-		len += _putchar(*(save + pos++));
+		else
+			len += _putchar(*(save + pos++));
 	}
 	return (len);
 }
