@@ -12,30 +12,37 @@ int _printf(const char *format, ...)
 	int pos = 0, len = 0, tmp = 0, count = 0;
 	const char *savec;
 
-	if (format == NULL || restriction_percentage(format) == -1)
-		exit(1);
-
 	va_start(ptr, format);
-	while (*(format + pos) != '\0')
-	{
-		savec = (format + pos);
-		if (*savec == '%' && *(savec + 1) != '%')
-		{
-			len = match_case(savec + 1)(ptr);
-			tmp += len;
 
-			pos = pos + 2;
-			savec = (format + pos - 2);
+	if (format != NULL)
+	{
+		if (restriction_percentage(format) != -1)
+		{
+			while (*(format + pos) != '\0')
+			{
+				savec = (format + pos);
+				if (*savec == '%' && *(savec + 1) != '%')
+				{
+					len = match_case(savec + 1)(ptr);
+					tmp += len;
+					pos = pos + 2;
+					savec = (format + pos - 2);
+				}
+				if (*(savec) == '%' && *(savec + 1) == '%')
+					pos++, savec = (format + pos);
+				if (*(savec - 1) != '%' && *(savec) == '%' && *(savec + 1) != '%')
+				continue;
+			_putchar(*(savec));
+			count++;
+			pos++;
+			}
+		if (count == 0 && len == 0)
+			exit(1);
 		}
-		if (*(savec) == '%' && *(savec + 1) == '%')
-			pos++, savec = (format + pos);
-		if (*(savec - 1) != '%' && *(savec) == '%' && *(savec + 1) != '%')
-			continue;
-		_putchar(*(savec));
-		count++;
-		pos++;
+		else
+			exit(1);
 	}
-	if (count == 0 && len == 0)
+	else
 		exit(1);
 	va_end(ptr);
 	return (count + tmp);
