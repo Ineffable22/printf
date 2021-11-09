@@ -22,6 +22,7 @@ int convert_base(int base, int number, int band)
 	ptr--;
 	if (number < 0)
 		number = -number;
+
 	while (number >= 0)
 	{
 		*ptr-- = buffer[number % base];
@@ -34,6 +35,8 @@ int convert_base(int base, int number, int band)
 	if (band == 16)
 		*ptr-- = 'x', *ptr-- = '0';
 	ptr++;
+	if (ptr == NULL)
+		exit(100);
 	_puts(ptr);
 	return (_strlen(ptr));
 }
