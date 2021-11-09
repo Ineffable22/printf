@@ -14,7 +14,7 @@ int digit_case_S(va_list ptr)
 	while (*(save + tmp))
 	{
 		c = *(save + tmp);
-		if ((0 < c && 37 > c) || c >= 127)
+		if ((0 < c && 32 > c) || c >= 127)
 		{
 			_putchar('\\');
 			pos++;
