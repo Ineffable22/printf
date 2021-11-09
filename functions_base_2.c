@@ -11,6 +11,11 @@ int digit_case_S(va_list ptr)
 	char *save = va_arg(ptr, char *);
 	char c;
 
+	if (save == NULL)
+	{
+		_puts("(null)");
+		return (6);
+	}
 	while (*(save + tmp))
 	{
 		c = *(save + tmp);
