@@ -22,10 +22,10 @@ int _printf(const char *format, ...)
 		if (*savec == '%' && *(savec + 1) != '%')
 		{
 			len = match_case(savec + 1)(ptr);
-			tmp += len - 2;
+			tmp += len;
 
 			pos = pos + 2;
-			savec = (format + pos);
+			savec = (format + pos - 2);
 		}
 		if (*(savec) == '%' && *(savec + 1) == '%')
 			pos++, savec = (format + pos);
