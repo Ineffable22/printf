@@ -55,7 +55,7 @@ int digit_base_8(va_list ptr)
  */
 int digit_base_2(va_list ptr)
 {
-	int save = va_arg(ptr, int);
+	unsigned int save = va_arg(ptr, unsigned int);
 
 	return (convert_base(2, save, 0));
 }
