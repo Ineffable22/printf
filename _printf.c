@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (*(format) == '\0')
 		return (0);
-	for (pos = 0;*(format + pos) != '\0'; pos++)
+	for (pos = 0; *(format + pos) != '\0'; pos++)
 	{
 		if (*(format + pos) == '%' && *(format + pos + 1) == '%')
 		{
@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 			pos++;
 			continue;
 		}
-		if(*(format + pos) == '%' && *(format + pos + 1) == '\0')
+		if (*(format + pos) == '%' && *(format + pos + 1) == '\0')
 		{
 			return (-1);
 		}
@@ -42,48 +42,4 @@ int _printf(const char *format, ...)
 	}
 	va_end(ptr);
 	return (count);
-#include "main.h"
-/**
- * _printf - Prints the string
- * @format: A variable that points to a list of arguments
- * @...: The rest of the arguments
- *
- * Return: the length of the printed string
- */
-int _printf(const char *format, ...)
-{
-	int pos, count = 0;
-	va_list ptr;
-
-	va_start(ptr, format);
-
-	if ((format == NULL) || (*(format) == '%' && *(format + 1) == '\0'))
-		return (-1);
-	if (*(format) == '\0')
-		return (0);
-	for (pos = 0;*(format + pos) != '\0'; pos++)
-	{
-		if (*(format + pos) == '%' && *(format + pos + 1) == '%')
-		{
-			count += write(1, format + pos, 1);
-			pos++;
-			continue;
-		}
-		if(*(format + pos) == '%' && *(format + pos + 1) == '\0')
-		{
-			return (-1);
-		}
-		if (*(format + pos) == '%')
-		{
-			if (match_case(format + pos + 1) != NULL)
-			{
-				count += match_case(format + pos + 1)(ptr);
-				pos++;
-				continue;
-			}
-		}
-		count += write(1, format + pos, 1);
-	}
-	va_end(ptr);
-	return (count);
-}}
+}
