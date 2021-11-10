@@ -5,7 +5,7 @@
  *
  * Return: Pointer to function associated to flag
  */
-int (*match_case(const char *flag))(va_list ptr)
+int (*match_case(const char *flag))(va_list ptr, char **add)
 {
 	int pos = 0;
 
@@ -19,14 +19,16 @@ int (*match_case(const char *flag))(va_list ptr)
 		{"X", digit_base_16_upper},
 		{"o", digit_base_8},
 		{"u", digit_case_u},
+		{"S", digit_case_S},
+		{"p", digit_case_address},
 		{NULL, NULL}
 	};
 
-	while (pos < 9)
+	while (pos < 11)
 	{
 		if (*(flag_store[pos]).c == *flag)
-			return (flag_store[pos].f);
+			return(flag_store[pos].f);
 		pos++;
 	}
-	return (flag_store[pos].f);
+	return(flag_store[pos].f);
 }
