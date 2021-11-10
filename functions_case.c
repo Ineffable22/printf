@@ -27,7 +27,7 @@ int string_case(va_list ptr, char **add)
 
 	if (save == NULL)
 		save = "(null)";
-	while(*save != '\0')
+	while (*save != '\0')
 	{
 		**add = *save;
 		(*add)++;
