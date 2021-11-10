@@ -14,16 +14,13 @@ int convert_base(int base, long int number, int band, char **add)
 	char buffersito[20];
 	char *ptr = &buffersito[20];
 	long int save = number, len_end = 0;
+	char *hx_upper = "0123456789ABCDEF", *hx_lower = "0123456789abcdef";
 
-	if (band == 0 || band == 2)
-		_strcpy(buffer, "0123456789ABCDEF");
-	else
-		_strcpy(buffer, "0123456789abcdef");
+	_strcpy(buffer, ((band == 0 || band == 2) ? hx_upper : hx_lower));
 	*ptr = '\0', ptr--;
-
 	if (number == 0)
 	{
-		**add = 48, (*add)++;/*_putchar(48);*/
+		**add = 48, (*add)++; /*_putchar(48);*/
 		return (1);
 	}
 	if (number < 0)
@@ -43,9 +40,7 @@ int convert_base(int base, long int number, int band, char **add)
 	len_end += _strlen(ptr);
 	while (len_end > 0)
 	{
-		**add = *ptr;
-		ptr++;
-		(*add)++;
+		**add = *ptr, ptr++, (*add)++;
 		len_end--;
 	}
 	return (0);
@@ -80,4 +75,42 @@ int print_number(long int n, char **add)
 	(*add)++;
 	/*_putchar(r % 10 + '0');*/
 	return (0);
+}
+
+/**
+ * rot13 - Converts string to rot13
+ * @list: string to convert
+ * @add: A pointer pointing to a memory address within the buffer
+ *
+ * Return: converted string
+ */
+int rot13(va_list list, char **add)
+{
+	int i;
+	int x;
+	char *str;
+	char s[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char u[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	str = va_arg(list, char *);
+	if (str == NULL)
+		return (-1);
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		for (x = 0; x <= 52; x++)
+		{
+			if (str[i] == s[x])
+			{
+				**add = u[x];
+				(*add)++;
+				break;
+			}
+		}
+		if (x == 53)
+		{
+			**add = u[x];
+			(*add)++;
+		}
+	}
+	return (i);
 }
