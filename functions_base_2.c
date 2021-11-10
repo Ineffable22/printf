@@ -27,8 +27,9 @@ int digit_case_S(va_list ptr, char **add)
 		}
 		else
 		{
-			**add = 48;
+			**add = *(save + pos);
 			(*add)++;
+			pos++;
 		}
 	}
 	return (0);
