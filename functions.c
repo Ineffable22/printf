@@ -53,12 +53,8 @@ int convert_base(int base, long int number, int band, char **add)
 /**
  * print_number - prints an integer.
  * @n: integer n to print using _putchar
-<<<<<<< HEAD
- * @add: A pointer pointing to a memory address within the buffer*
- *
-=======
  * @add: A pointer pointing to a memory address within the buffer
->>>>>>> e8465b704b2004cbb2d3d288fa5c8bf501fd8603
+ *
  * Return: none - void function
  */
 int print_number(long int n, char **add)
