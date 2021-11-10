@@ -21,10 +21,11 @@ int (*match_case(const char *flag))(va_list ptr, char **add)
 		{"u", digit_case_u},
 		{"S", digit_case_S},
 		{"p", digit_case_address},
+		{"R", rot13},
 		{NULL, NULL}
 	};
 
-	while (pos < 11)
+	while (pos < 12)
 	{
 		if (*(flag_store[pos]).c == *flag)
 			return (flag_store[pos].f);
