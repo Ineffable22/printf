@@ -8,9 +8,9 @@
  */
 int _printf(const char *format, ...)
 {
-	int pos, count = 0;
+	int pos;
 	va_list ptr;
-	char buff[1024];
+	char buff[2000];
 	char *add = &buff[0];
 
 	va_start(ptr, format);
@@ -37,7 +37,7 @@ int _printf(const char *format, ...)
 		{
 			if (match_case(format + pos + 1) != NULL)
 			{
-				count += match_case(format + pos + 1)(ptr, &add);
+				match_case(format + pos + 1)(ptr, &add);
 				pos++;
 				continue;
 			}
