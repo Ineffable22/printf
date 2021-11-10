@@ -1,27 +1,17 @@
-.\"Modified from man(1) of FreeBSD, the NetBSD mdoc.template, and mdoc.samples.
-.\"See Also:
-.\"man mdoc.samples for a complete listing of options
-.\"man mdoc for the short list of editing options
-.\"/usr/share/misc/mdoc.template
-.Dd 8/4/10               \" DATE
-.Dt Untitled 1      \" Program name and manual section number
+.Dd 10/11/21             \" DATE
+.Dt _Printf (3 "Linux Programmer's Manual"  \" Program name and manual section number
 .Os Miguel
-.Sh NAME                 \" Section Header - required - don't modify
-.Nm Untitled,
+.Sh NAME             \" Section Header - required - don't modify
+.Nm _Printf,
 .\" The following lines are read in generating the apropos(man -k) database. Use only key
 .\" words here as the database is built based on the words here and in the .ND line.
-.Nm Other_name_for_same_program(),
-.Nm Yet another name for the same program.
+.nm 
 .\" Use .Nm macro to designate other names for the documented program.
-.Nd This line parsed for whatis database.
+.Nd Our own version of the function printf
 .Sh SYNOPSIS             \" Section Header - required - don't modify
-.Nm
-.Op Fl abcd              \" [-abcd]
-.Op Fl a Ar path         \" [-a path]
-.Op Ar file              \" [file]
-.Op Ar                   \" [file ...]
-.Ar arg0                 \" Underlined argument - use .Ar anywhere to underline
-arg2 ...                 \" Arguments
+.Nm #include <stdio.h>    \" [-abcd]
+
+int _printf(const char *restrict format, ...);                \" Arguments
 .Sh DESCRIPTION          \" Section Header - required - don't modify
 The functions in the 
 .Nm printf()
@@ -35,16 +25,6 @@ The functions in the
 .\" .It Ev ENV_VAR_2
 .\" Description of ENV_VAR_2
 .\" .El
-.Sh Length modifier                \" File used or created by the topic of the man page
-.Bl -tag -width "/Users/joeuser/Library/really_long_file_name" -compact
-.It s \"-a flag as a list item
-A following integer conversion corresponds to a short or unsigned short argument, 
-or a following n conversion corresponds to a pointer to a short argument.
-.It i
-(ell) A following integer conversion corresponds to a long or unsigned long argument, 
-or a following n conversion corresponds to a pointer to a long argument, or a following 
-c conversion corresponds to a wint_t argument, or a following s conversion corresponds 
-to a pointer to wchar_t argument.
 .Sh Conversion specifiers                \" File used or created by the topic of the man page
 .Bl -tag -width "/Users/joeuser/Library/really_long_file_name" -compact
 .It d i \"-a flag as a list item
@@ -58,14 +38,10 @@ or a following n conversion corresponds to a pointer to a long argument, or a fo
 c conversion corresponds to a wint_t argument, or a following s conversion corresponds 
 to a pointer to wchar_t argument.
 .It S
-If no l modifier is present: the const char * argument is expected to be a pointer to an 
-array of character type (pointer to a string).  Characters from the array are written up 
-to (but not including) a terminating null byte ('\0'); if a precision is specified, no more 
-than the number specified are written.  If a precision is given, no null byte need be present; 
-if the precision is not specified, or is greater than the size of the array, the array must 
-contain a terminating null byte.
+Non printable characters (0 < ASCII value < 32 or >= 127) are printed this way: \x, 
+followed by the ASCII code value in hexadecimal (upper case - always 2 characters).
 .It c
-(Not in C99 or C11, but in SUSv2, SUSv3, and SUSv4.) Synonym for lc.  Don't use.
+print char.
 .It o, u, x, X
 (Not in C99 or C11, but in SUSv2, SUSv3, and SUSv4.) Synonym for ls.  Don't use.
 .It  %
