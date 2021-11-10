@@ -1,8 +1,8 @@
 #include "main.h"
 /**
  * _putchar - writes the character c to stdout
- * @buffer: The content of the buffer
- * @size: the size of the buffer
+ * @buffer: content of the buffer
+ * @size: size of the buffer
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
