@@ -1,60 +1,87 @@
-PRINTF
-
-DESCRIPTION
-
-	The functions in the printf() family produce output according to a format as described below.
-
-Length modifier
-	h		  A following integer conversion corresponds to a short or
-              unsigned short argument, or a following n conversion
-              corresponds to a pointer to a short argument.
-
-	l		  (ell) A following integer conversion corresponds to a long
-              or unsigned long argument, or a following n conversion
-              corresponds to a pointer to a long argument, or a
-              following c conversion corresponds to a wint_t argument,
-              or a following s conversion corresponds to a pointer to
-              wchar_t argument.
-
-Conversion specifiers
-	d, i		  The int argument is converted to signed decimal notation.
-              The precision, if any, gives the minimum number of digits
-              that must appear; if the converted value requires fewer
-              digits, it is padded on the left with zeros.  The default
-              precision is 1.  When 0 is printed with an explicit
-              precision 0, the output is empty.
-
-	o, u, x, X
-              The unsigned int argument is converted to unsigned octal
-              (o), unsigned decimal (u), or unsigned hexadecimal (x and
-              X) notation.  The letters abcdef are used for x
-              conversions; the letters ABCDEF are used for X
-              conversions.  The precision, if any, gives the minimum
-              number of digits that must appear; if the converted value
-              requires fewer digits, it is padded on the left with
-              zeros.  The default precision is 1.  When 0 is printed
-              with an explicit precision 0, the output is empty.
-
-	s		  If no l modifier is present: the const char * argument is
-              expected to be a pointer to an array of character type
-              (pointer to a string).  Characters from the array are
-              written up to (but not including) a terminating null byte
-              ('\0'); if a precision is specified, no more than the
-              number specified are written.  If a precision is given, no
-              null byte need be present; if the precision is not
-              specified, or is greater than the size of the array, the
-              array must contain a terminating null byte.
-
-	C		  (Not in C99 or C11, but in SUSv2, SUSv3, and SUSv4.)
-              Synonym for lc.  Don't use.
-
-	S		  (Not in C99 or C11, but in SUSv2, SUSv3, and SUSv4.)
-              Synonym for ls.  Don't use.
-
-	%		  A '%' is written.  No argument is converted.  The complete
-              conversion specification is '%%'.
-
-RETURN VALUE
-       Upon successful return, these functions return the number of
-       characters printed (excluding the null byte used to end output to
-       strings).
+.\"Modified from man(1) of FreeBSD, the NetBSD mdoc.template, and mdoc.samples.
+.\"See Also:
+.\"man mdoc.samples for a complete listing of options
+.\"man mdoc for the short list of editing options
+.\"/usr/share/misc/mdoc.template
+.Dd 8/4/10               \" DATE
+.Dt Untitled 1      \" Program name and manual section number
+.Os Miguel
+.Sh NAME                 \" Section Header - required - don't modify
+.Nm Untitled,
+.\" The following lines are read in generating the apropos(man -k) database. Use only key
+.\" words here as the database is built based on the words here and in the .ND line.
+.Nm Other_name_for_same_program(),
+.Nm Yet another name for the same program.
+.\" Use .Nm macro to designate other names for the documented program.
+.Nd This line parsed for whatis database.
+.Sh SYNOPSIS             \" Section Header - required - don't modify
+.Nm
+.Op Fl abcd              \" [-abcd]
+.Op Fl a Ar path         \" [-a path]
+.Op Ar file              \" [file]
+.Op Ar                   \" [file ...]
+.Ar arg0                 \" Underlined argument - use .Ar anywhere to underline
+arg2 ...                 \" Arguments
+.Sh DESCRIPTION          \" Section Header - required - don't modify
+The functions in the 
+.Nm printf()
+ family produce output according to a format as described below.
+.El                      \" Ends the list
+.Pp
+.\" .Sh ENVIRONMENT      \" May not be needed
+.\" .Bl -tag -width "ENV_VAR_1" -indent \" ENV_VAR_1 is width of the string ENV_VAR_1
+.\" .It Ev ENV_VAR_1
+.\" Description of ENV_VAR_1
+.\" .It Ev ENV_VAR_2
+.\" Description of ENV_VAR_2
+.\" .El
+.Sh Length modifier                \" File used or created by the topic of the man page
+.Bl -tag -width "/Users/joeuser/Library/really_long_file_name" -compact
+.It s \"-a flag as a list item
+A following integer conversion corresponds to a short or unsigned short argument, 
+or a following n conversion corresponds to a pointer to a short argument.
+.It i
+(ell) A following integer conversion corresponds to a long or unsigned long argument, 
+or a following n conversion corresponds to a pointer to a long argument, or a following 
+c conversion corresponds to a wint_t argument, or a following s conversion corresponds 
+to a pointer to wchar_t argument.
+.Sh Conversion specifiers                \" File used or created by the topic of the man page
+.Bl -tag -width "/Users/joeuser/Library/really_long_file_name" -compact
+.It d i \"-a flag as a list item
+The int argument is converted to signed decimal notation. The precision, if any, gives the 
+minimum number of digits that must appear; if the converted value requires fewer digits, 
+it is padded on the left with zeros.  The default precision is 1.  When 0 is printed with 
+an explicit precision 0, the output is empty.
+.It o, u, x, X
+(ell) A following integer conversion corresponds to a long or unsigned long argument, 
+or a following n conversion corresponds to a pointer to a long argument, or a following 
+c conversion corresponds to a wint_t argument, or a following s conversion corresponds 
+to a pointer to wchar_t argument.
+.It S
+If no l modifier is present: the const char * argument is expected to be a pointer to an 
+array of character type (pointer to a string).  Characters from the array are written up 
+to (but not including) a terminating null byte ('\0'); if a precision is specified, no more 
+than the number specified are written.  If a precision is given, no null byte need be present; 
+if the precision is not specified, or is greater than the size of the array, the array must 
+contain a terminating null byte.
+.It c
+(Not in C99 or C11, but in SUSv2, SUSv3, and SUSv4.) Synonym for lc.  Don't use.
+.It o, u, x, X
+(Not in C99 or C11, but in SUSv2, SUSv3, and SUSv4.) Synonym for ls.  Don't use.
+.It  %
+A '%' is written.  No argument is converted.  The complete conversion specification is '%%'.
+.El                      \" Ends the list
+.\" .Sh DIAGNOSTICS       \" May not be needed
+.\" .Bl -diag
+.\" .It Diagnostic Tag
+.\" Diagnostic informtion here.
+.\" .It Diagnostic Tag
+.\" Diagnostic informtion here.
+.\" .El
+.Sh RETURN VALUE
+.\" List links in ascending order by section, alphabetically within a section.
+.\" Please do not reference files that do not exist without filing a bug report
+.Xr Upon successful return, these functions return the number of characters printed 
+(excluding the null byte used to end output to strings).
+.\" .Sh BUGS              \" Document known, unremedied bugs
+.\" .Sh HISTORY           \" Document history if command behaves in a unique manner
