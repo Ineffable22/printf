@@ -61,3 +61,17 @@ A '%' is written.  No argument is converted.  The complete conversion specificat
 (excluding the null byte used to end output to strings).
 .\" .Sh BUGS              \" Document known, unremedied bugs
 .\" .Sh HISTORY           \" Document history if command behaves in a unique manner
+.Sh Example
+#include "main.h"
+
+int main()
+
+{
+
+_printf("Hello world, I'm a %s", "Holbie");
+
+return (0);
+
+}
+
+Hello world, I'm a Holbie
