@@ -4,10 +4,11 @@
  * @base: Number of base to convert
  * @number: Number to convert
  * @band: Flag with order to follow
+ * @add: A pointer pointing to a memory address within the buffer
  *
  * Return: length of string added to buffer
  */
-int convert_base(int base, long int number, int band)
+int convert_base(int base, long int number, int band, char **add)
 {
 	char buffer[17];
 	char buffersito[20];
@@ -23,7 +24,7 @@ int convert_base(int base, long int number, int band)
 
 	if (number == 0)
 	{
-		_putchar(48);
+		**add = 48, (*add)++; /*_putchar(48);*/
 		return (1);
 	}
 	/* - - - - - - - - convert - - - - - - -  */
@@ -43,28 +44,29 @@ int convert_base(int base, long int number, int band)
 
 	if (_strlen(ptr) < 2 && band == 2)
 	{
-		_putchar('0');
-		len_end++;
+		**add = 0, (*add)++;
+		len_end++; /*_putchar('0');*/
 	}
 	len_end += _strlen(ptr);
 	return (write(1, ptr, len_end));
 }
-
-
 /**
  * print_number - prints an integer.
  * @n: integer n to print using _putchar
+ * @add: A pointer pointing to a memory address within the buffer
  *
  * Return: none - void function
  */
-int print_number(long int n)
+int print_number(long int n, char **add)
 {
 	unsigned int r;
 	int _length = 0;
 
 	if (n < 0)
 	{
-		_putchar(45);
+		**add = 45;
+		(*add)++;
+		/*_putchar(45);*/
 		n *= -1;
 		_length++;
 	}
@@ -72,9 +74,10 @@ int print_number(long int n)
 
 	if (r / 10)
 	{
-		_length += print_number(r / 10);
+		_length += print_number(r / 10, add);
 	}
-	_putchar(r % 10 + '0');
-	_length++;
-	return (_length++);
+	**add = r % 10 + '0';
+	(*add)++;
+	/*_putchar(r % 10 + '0');*/
+	return (0);
 }
