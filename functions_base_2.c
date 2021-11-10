@@ -1,40 +1,75 @@
 #include "main.h"
 /**
- * digit_case_S - custom conversion specifier
+ * char_case - Add the argument character to the buffer
  * @ptr: A variable that points to a list of arguments
  * @add: A pointer pointing to a memory address within the buffer
  *
  * Return: length of string added to buffer
  */
-int digit_case_S(va_list ptr, char **add)
+int char_case(va_list ptr, char **add)
 {
-	unsigned int pos = 0, len = 0;
+	char c = va_arg(ptr, int);
+
+	**add = c;
+	(*add)++;
+	return (0);
+}
+/**
+ * string_case - Add the argument string to the buffer
+ * @ptr: A variable that points to a list of arguments
+ * @add: A pointer pointing to a memory address within the buffer
+ *
+ * Return: length of string added to buffer
+ */
+int string_case(va_list ptr, char **add)
+{
 	char *save = va_arg(ptr, char *);
 
 	if (save == NULL)
 		save = "(null)";
-	while (*(save + pos))
+	while (*save != '\0')
 	{
-		if ((0 < *(save + pos) && 32 > *(save + pos)) || *(save + pos) >= 127)
-		{
-			**add = '\\';
-			(*add)++;
-			**add = 'x';
-			(*add)++;
-			/**
-			 *_putchar('\\');
-			 *_putchar('x');
-			 */
-			len += 2;
-			len += convert_base(16, *(save + pos), 2, add);
-			pos++;
-		}
-		else
-		{
-			**add = 48;
-			(*add)++;
-			/*len += _putchar(*(save + pos++));*/
-		}
+		**add = *save;
+		(*add)++;
+		save++;
 	}
 	return (0);
+}
+
+/**
+ * digit_case_u - Add the argument unsigned int to the buffer
+ * @ptr: A variable that points to a list of arguments
+ * @add: A pointer pointing to a memory address within the buffer
+ *
+ * Return: length of string added to buffer
+ */
+int digit_case_u(va_list ptr, char **add)
+{
+	unsigned int save = va_arg(ptr, unsigned int);
+
+	return (print_number(save, add));
+}
+/**
+ * digit_case_address - Add the argument hexadecimal to the buffer
+ * @ptr: A variable that points to a list of arguments
+ * @add: A pointer pointing to a memory address within the buffer
+ *
+ * Return: length of string added to buffer
+ */
+int digit_case_address(va_list ptr, char **add)
+{
+	unsigned long int save = va_arg(ptr, unsigned long int);
+	char *isNill = "(nil)";
+
+	if (save == 0)
+	{
+		while (*isNill != '\0')
+		{
+			**add = *isNill;
+			(*add)++;
+			isNill++;
+		}
+		return (0);
+	}
+	return (convert_base(16, save, 16, add));
 }
