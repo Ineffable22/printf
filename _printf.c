@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 {
 	int pos, count = 0;
 	va_list ptr;
-	char buff[2000];
+	char buff[1024];
 	char *add = &buff[0];
 
 	va_start(ptr, format);
