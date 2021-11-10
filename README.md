@@ -38,32 +38,3 @@ The following format specifiers are supported:
 | %      | A % followed by another % character will write a single % |
 
 ## Examples
-
-## EXIT CODE
-Error 90  - Error invalid flag
-
-Error 91  -
-
-Error 92  -
-
-Error 93  -
-
-Error 94  -
-
-Error 95  -
-
-Error 96  -
-
-Error 97  -
-
-Error 98  -
-
-Error 99  -
-
-Error 100 -
-
-Error 101 -
-
-Error 103 -
-
-Error 104 -
