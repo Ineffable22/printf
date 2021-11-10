@@ -37,6 +37,8 @@ int digit_base_2(va_list, char **);
 int digit_base_8(va_list, char **);
 int digit_base_16_lower(va_list, char **);
 int digit_base_16_upper(va_list, char **);
+
+int rot13(va_list list, char **add);
 /*------------------------------------*/
 int restriction_percentage(const char *str);
 int (*match_case(const char *))(va_list, char **);
