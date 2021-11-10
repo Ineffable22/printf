@@ -11,7 +11,7 @@
 The format string is a character string, is composed
 of zero or more directives
 
-### Usage 
+### Usage
 like the according main.h library version:
 ```C
 int _printf(const char *format, ...);
@@ -37,4 +37,32 @@ The following format specifiers are supported:
 | p      | Pointer address |
 | %      | A % followed by another % character will write a single % |
 
+### Value Return 
+Upon successful return, all functions return the number of characters written, _excluding_ the terminating null character used to end the string. If any error is encountered, `-1` is returned.
+
 ## Examples
+```c
+#include "main.h"
+
+int main()
+{
+	_printf("Hello world, I'm a %s", "Holbie");
+	return (0);
+}
+```
+`Hello world, I'm a Holbie`
+
+```c
+#include "main.h"
+
+int main()
+{
+	_printf("%S\n", "Best\nSchool!");
+	return (0);
+}
+```
+`Best\x0ASchool!`
+
+```c
+int _printf(const char *restrict format, ...);
+```
