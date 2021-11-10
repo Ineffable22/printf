@@ -35,7 +35,6 @@ int string_case(va_list ptr, char **add)
 	}
 	return (0);
 }
-
 /**
  * digit_case_u - Add the argument unsigned int to the buffer
  * @ptr: A variable that points to a list of arguments
@@ -58,8 +57,8 @@ int digit_case_u(va_list ptr, char **add)
  */
 int digit_case_address(va_list ptr, char **add)
 {
-	unsigned long int save = va_arg(ptr, unsigned long int);
-	char *isNill = "(nil)";
+	long int save = va_arg(ptr, unsigned long int);
+	char *isNill = "(nil)", *f_all = "0xffffffff";
 
 	if (save == 0)
 	{
@@ -71,5 +70,16 @@ int digit_case_address(va_list ptr, char **add)
 		}
 		return (0);
 	}
+	if (save == -1)
+	{
+		while (*f_all != '\0')
+		{
+			**add = *f_all;
+			(*add)++;
+			f_all++;
+		}
+		return (0);
+	}
+
 	return (convert_base(16, save, 16, add));
 }
