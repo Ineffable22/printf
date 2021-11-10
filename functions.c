@@ -4,6 +4,7 @@
  * @base: Number of base to convert
  * @number: Number to convert
  * @band: Flag with order to follow
+ * @add: A pointer pointing to a memory address within the buffer
  *
  * Return: length of string added to buffer
  */
@@ -17,15 +18,13 @@ int convert_base(int base, long int number, int band, char **add)
 	if (band == 0 || band == 2)
 		_strcpy(buffer, "0123456789ABCDEF");
 	else
-		_strcpy(buffer, "0123456789abcdef");	
+		_strcpy(buffer, "0123456789abcdef");
 	*ptr = '\0';
 	ptr--;
 
 	if (number == 0)
 	{
-		**add = 48;
-		(*add)++;
-		/*_putchar(48);*/
+		**add = 48, (*add)++; /*_putchar(48);*/
 		return (1);
 	}
 	/* - - - - - - - - convert - - - - - - -  */
@@ -45,13 +44,8 @@ int convert_base(int base, long int number, int band, char **add)
 
 	if (_strlen(ptr) < 2 && band == 2)
 	{
-		**add = 0;
-		(*add)++;
-		len_end++;
-		/*
-		_putchar('0');
-		
-		*/
+		**add = 0, (*add)++;
+		len_end++; /*_putchar('0');*/
 	}
 	len_end += _strlen(ptr);
 	return (write(1, ptr, len_end));
@@ -59,6 +53,7 @@ int convert_base(int base, long int number, int band, char **add)
 /**
  * print_number - prints an integer.
  * @n: integer n to print using _putchar
+ * @add: A pointer pointing to a memory address within the buffer
  *
  * Return: none - void function
  */
